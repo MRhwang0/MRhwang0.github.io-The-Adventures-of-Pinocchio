@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>木偶奇遇记 - 童心奇遇馆 | 书信与知识树画廊</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Comic Neue', 'Chalkboard SE', 'Comic Sans MS', cursive, sans-serif;
+            background: #fef5e7;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255,215,150,0.2) 2%, transparent 2.5%),
+                              radial-gradient(circle at 80% 70%, rgba(210,180,140,0.2) 1.5%, transparent 2%);
+            background-size: 40px 40px, 35px 35px;
+            color: #3e2a1f;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px 30px;
+        }
+
+        /* 头部与角色贴图 */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, #c78a3b, #e0a878, #b5622e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            background: #f7e3c0;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-top: 8px;
+        }
+
+        .character-strip {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 30px 0 20px;
+        }
+
+        .character-card {
+            background: #fff9ef;
+            border-radius: 60px 60px 40px 40px;
+            padding: 12px 18px 8px 18px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+            text-align: center;
+            width: 110px;
+            border: 2px solid #f1cf94;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .character-emoji {
+            font-size: 3.2rem;
+        }
+
+        .character-name {
+            font-weight: bold;
+            margin-top: 8px;
+            color: #b45f2b;
+        }
+
+        /* 导航标签 (三个分页) */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0 25px;
+            border-bottom: 3px solid #e9cca6;
+            padding-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #8b5a2b;
+            padding: 8px 24px;
+            border-radius: 40px;
+            transition: all 0.2s;
+            background: #fce9cf;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .nav-link.active {
+            background: #d99345;
+            color: white;
+            box-shadow: 0 4px 10px rgba(185, 95, 20, 0.3);
+        }
+
+        .nav-link:hover:not(.active) {
+            background: #f7d9ae;
+            color: #6b3e1a;
+        }
+
+        /* 页面容器 */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        /* 通用区域样式 */
+        .section-title {
+            font-size: 2rem;
+            border-left: 12px solid #e29c45;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #5f3a1a;
+        }
+
+        /* 思维导图网格 (画廊) */
+        .mindmap-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 20px;
+        }
+
+        .mindmap-item {
+            background: #f5ead9;
+            border-radius: 32px;
+            padding: 16px;
+            width: 280px;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .mindmap-img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            border: 3px solid #eab668;
+            transition: 0.2s;
+            background: #f0e0c0;
+        }
+
+        .mindmap-item p {
+            margin-top: 12px;
+            font-weight: 600;
+            color: #9b5e2c;
+        }
+
+        /* 书信卡片区域 */
+        .letters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .letter-card {
+            background: #fffef7;
+            width: 320px;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid #ffddb0;
+        }
+
+        .letter-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+        }
+
+        .letter-header {
+            background: #f1d5a6;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #5c3516;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px dashed #dba459;
+        }
+
+        .letter-preview {
+            padding: 20px;
+            line-height: 1.5;
+            color: #3c2a1c;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fffaf2;
+            min-height: 180px;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: #e2b87a;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin: 10px 20px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .read-more:hover {
+            background: #c57f3a;
+        }
+
+        .role-badge {
+            background: #d9a066;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-left: 8px;
+        }
+
+        /* 全屏遮罩层 (点击放大) */
+        .fullscreen-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            cursor: pointer;
+        }
+        .fullscreen-overlay.active {
+            display: flex;
+        }
+        .fullscreen-overlay img {
+            max-width: 92%;
+            max-height: 92%;
+            border: 6px solid #eab668;
+            border-radius: 28px;
+            box-shadow: 0 0 40px rgba(218, 165, 32, 0.6);
+            background: #2e241a;
+            object-fit: contain;
+        }
+
+        /* 书信详细模态框 */
+        .letter-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+        }
+        .letter-modal-overlay.active {
+            display: flex;
+        }
+        .letter-modal-card {
+            background: #fff5e6;
+            max-width: 600px;
+            width: 85%;
+            border-radius: 48px;
+            padding: 28px;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+        }
+        .letter-modal-card h2 {
+            color: #b56327;
+            border-bottom: 2px solid #efcd91;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .letter-modal-card p {
+            margin: 16px 0;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        .close-letter-btn {
+            background: #d1843b;
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* 超链接样式 + 更多按钮 */
+        .more-link-btn {
+            background: #d99345;
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: none;
+            margin-top: 20px;
+        }
+        .more-link-btn:hover {
+            background: #b45f2a;
+            transform: scale(1.02);
+        }
+        .center-btn {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #b48957;
+            border-top: 2px dashed #ebcea8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 15px;
+            }
+            .nav-link {
+                font-size: 1.1rem;
+                padding: 6px 16px;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+        .pinocchio-bg {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23f4cda6" d="M50,15 L57,35 L78,35 L62,48 L69,68 L50,56 L31,68 L38,48 L22,35 L43,35 Z"/><circle cx="50" cy="50" r="5" fill="%23bc8f4b"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.05;
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+<div class="pinocchio-bg"></div>
+<div class="container">
+    <div class="header">
+        <h1>📖 木偶奇遇记 ✨</h1>
+        <p>四年级童心书信展 · 知识树思维导图画廊</p>
+        <div class="character-strip">
+            <div class="character-card"><div class="character-emoji">🧸</div><div class="character-name">匹诺曹</div></div>
+            <div class="character-card"><div class="character-emoji">👴</div><div class="character-name">杰佩托</div></div>
+            <div class="character-card"><div class="character-emoji">🦗</div><div class="character-name">蟋蟀先生</div></div>
+            <div class="character-card"><div class="character-emoji">🐱🦊</div><div class="character-name">狐狸&猫</div></div>
+            <div class="character-card"><div class="character-emoji">🧚‍♀️</div><div class="character-name">蓝仙女</div></div>
+        </div>
+    </div>
+
+    <!-- 三个分页导航 -->
+    <div class="nav-tabs">
+        <div class="nav-link active" data-page="home">🏠 主页 · 童信花园</div>
+        <div class="nav-link" data-page="letters">✉️ 书信珍藏阁</div>
+        <div class="nav-link" data-page="mindmaps">🌳 知识树画廊 · 更多导图</div>
+    </div>
+
+    <!-- 主页 (展示精选3封书信 + 精选3幅思维导图) -->
+    <div id="home-page" class="page active-page">
+        <!-- 思维导图精选区 (三幅) -->
+        <div class="mindmap-area" style="background: #fff7e8; border-radius: 48px; padding: 30px 20px; margin-bottom: 30px;">
+            <div class="section-title">🧠 知识树 · 精选思维导图</div>
+            <div class="mindmap-gallery" id="home-mindmaps"></div>
+            <div class="center-btn">
+                <div class="more-link-btn" id="toMindmapPageBtn">🌿 进入知识树分页，查看更多导图 ➤</div>
+            </div>
+        </div>
+
+        <!-- 书信精选展示 -->
+        <div class="section-title">💌 孩子们写给角色的信 · 精选三封</div>
+        <div class="letters-grid" id="home-letters"></div>
+        <div class="center-btn">
+            <div class="more-link-btn" id="toLettersPageBtn">✉️ 进入书信分页，查看更多书信 ➤</div>
+        </div>
+    </div>
+
+    <!-- 书信分页 (全部书信) -->
+    <div id="letters-page" class="page">
+        <div class="section-title">📜 书信珍藏阁 · 童心寄往奇遇镇</div>
+        <div class="letters-grid" id="full-letters-list"></div>
+        <div class="center-btn">
+            <div class="more-link-btn" id="backHomeFromLetters">🏠 返回主页</div>
+        </div>
+    </div>
+
+    <!-- 知识树分页 (展示所有思维导图) -->
+    <div id="mindmaps-page" class="page">
+        <div class="section-title">🌳 完整知识树 · 木偶奇遇记思维导图集</div>
+        <div class="mindmap-gallery" id="full-mindmaps-list"></div>
+        <div class="center-btn">
+            <div class="more-link-btn" id="backHomeFromMindmaps">🏠 返回主页</div>
+        </div>
+    </div>
+
+    <footer>
+        🌲 每一个孩子心中都有一个木偶奇遇记 | 诚实·勇敢·爱 ❤️ 点击图片即可放大欣赏导图细节
+    </footer>
+</div>
+
+<!-- 全屏放大图片模态框 -->
+<div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreenImage()">
+    <img id="fullscreenImage" src="" alt="放大的思维导图">
+</div>
+
+<!-- 书信详情模态框 -->
+<div id="letterDetailOverlay" class="letter-modal-overlay">
+    <div class="letter-modal-card" onclick="event.stopPropagation()">
+        <h2 id="modalLetterTitle">✨ 给角色的信</h2>
+        <div id="modalLetterContent"></div>
+        <button class="close-letter-btn" id="closeLetterDetailBtn">关闭 ✨</button>
+    </div>
+</div>
+
+<script>
+    // ======================= 思维导图完整数据集 =======================
+    const mindmapData = [
+    { id: 1, title: "📚 四年级小薇 · 匹诺曹成长路线", imgUrl: "0c4d58a4-92f6-43c8-9ca6-b863474dfaf0.jpg", desc: "从木偶到真正男孩的旅程" },
+{ id: 2, title: "🎨 小宇绘制 · 诚实与谎言主题图", imgUrl: "0c5167cf-2d68-445b-ae1d-386031615c67.jpg", desc: "每一次说谎鼻子变长" },
+        { id: 3, title: "🌟 四年2班 · 奇妙历险故事地图", imgUrl: "4ac0dc0c-770e-4879-8808-6274fad3a987.jpg", desc: "遇见狐狸、猫、蓝仙女" },
+        { id: 4, title: "🧠 四年3班 小林 · 角色关系网", imgUrl: "https://picsum.photos/id/15/400/300?seed=relationmap", desc: "匹诺曹与杰佩托、蟋蟀" },
+        { id: 5, title: "🌸 校级优秀作品 · 道德启示录", imgUrl: "https://picsum.photos/id/42/400/300?seed=lessons", desc: "诚实、勇敢、责任" },
+        { id: 6, title: "✨ 创意导图 · 欢乐岛冒险", imgUrl: "https://picsum.photos/id/96/400/300?seed=pleasureisland", desc: "贪玩变成驴子的警示" },
+        { id: 7, title: "🧵 蓝仙女与魔法时刻", imgUrl: "https://picsum.photos/id/145/400/300?seed=fairy", desc: "爱与宽恕" },
+        { id: 8, title: "🐱 狐狸与猫的陷阱", imgUrl: "https://picsum.photos/id/177/400/300?seed=foxcat", desc: "学会分辨真伪朋友" }
+    ];
+
+    // 书信数据 (6封)
+    const lettersData = [
+        { id: 1, author: "李思琪 (四年级)", role: "匹诺曹", title: "写给最勇敢的小木偶", preview: "亲爱的匹诺曹，你好！读了你的故事，我好喜欢你变成真正男孩的勇气...", fullContent: "亲爱的匹诺曹：你好呀！每次看到你从木头变成小男孩，我就觉得特别神奇。你经历了狐狸和猫的骗局，还在欢乐岛差点变成驴子，但你从来没有放弃做一个好孩子的心。我也要像你一样，上课认真听讲，对朋友诚实。最喜欢蓝仙女给你的爱，感觉就像妈妈一样温暖。祝你在奇遇镇永远开心！——你的朋友 李思琪" },
+        { id: 2, author: "王明远", role: "杰佩托", title: "致亲爱的木匠爷爷", preview: "杰佩托爷爷，您用爱心雕刻了匹诺曹，您是最温柔的爸爸...", fullContent: "亲爱的杰佩托爷爷：您好！您把唯一的衣服卖掉给匹诺曹买课本，那一刻我感动得哭了。您像我的爸爸一样，总是默默付出。匹诺曹虽然有时候调皮，但心里非常爱您。我要学习您的善良和坚持，以后也要温柔对待家人。谢谢您教会我什么是父爱。祝您健康长寿！ 四年级 王明远" },
+        { id: 3, author: "赵一诺", role: "蟋蟀先生", title: "致智慧的蟋蟀哲学家", preview: "尊敬的蟋蟀先生，您虽然个子小，但总是说最有道理的话...", fullContent: "尊敬的蟋蟀先生：您好！您总在小木偶犯错的时候提醒他，虽然匹诺曹一开始不听，但后来明白了您是对的。“在这个世界上，做诚实的孩子才有好报”，这句箴言我一直记着。您在木偶奇遇记里就像一盏灯。谢谢你教会我们听从良心的声音。我会像您一样，在朋友迷茫时给出善意的建议。祝蟋蟀小屋永远温暖！ 赵一诺 敬上" },
+        { id: 4, author: "陈欣然", role: "蓝仙女", title: "谢谢温柔的仙女姐姐", preview: "美丽的蓝仙女，您一次次原谅匹诺曹，用魔法帮助他成长...", fullContent: "蓝仙女亲启：您就像童话里最亮的那颗星，每当匹诺曹愿意诚实勇敢，您就给他机会。尤其是最后他说‘我要照顾爸爸’，您让他变成了真正的小男孩。我的梦想也是成为一个温暖的人，像您一样善良。感谢您的魔法，让我相信犯错后只要真心改正，就能得到包容。也祝您永远散发光芒！ 四年级 陈欣然" },
+        { id: 5, author: "刘子轩", role: "匹诺曹", title: "小木偶，我也想变勇敢", preview: "匹诺曹，你从贪玩爱撒谎到懂得保护爸爸，太厉害了...", fullContent: "嗨！匹诺曹：你知道吗？有一次我也因为懒惰没写作业骗了妈妈，鼻子当然没有变长，但心里好难受。后来看了你的故事，我决定以后再也不撒谎了。你救杰佩托爷爷的过程充满危险，但你做到了！你的故事教会我：责任感让人成长。希望我也能像你一样真诚，成为一个真正的男子汉！ 你的朋友 刘子轩" },
+        { id: 6, author: "周子涵", role: "狐狸和猫", title: "写给假装好心的坏蛋", preview: "狡猾的狐狸和猫，你们骗小木偶的钱，让他陷入危险...", fullContent: "狐狸先生和猫先生：虽然你们是坏角色，可你们的出现让匹诺曹明白了交朋友要擦亮眼睛。起初你们假装瘸腿和瞎眼，利用匹诺曹的轻信。谢谢你们（尽管是反面教材）让我知道要警惕花言巧语。我也学到了不贪婪，只有脚踏实地才有收获。感谢这个经典的角色组合，给故事带来张力。希望匹诺曹的故事永远流传！ 周子涵" }
+    ];
+
+    // ---------- 通用函数：生成思维导图卡片 (带点击放大) ----------
+    function createMindmapCard(mindmap) {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'mindmap-item';
+        cardDiv.setAttribute('data-img-src', mindmap.imgUrl);
+        cardDiv.innerHTML = `
+            <img class="mindmap-img" src="${mindmap.imgUrl}" alt="${mindmap.title}">
+            <p>${mindmap.title}</p>
+            <small style="color:#a57134;">${mindmap.desc}</small>
+        `;
+        // 全局放大事件绑定 (由事件委托再巩固，但在初始化时单独监听也可，为了可靠统一注册)
+        cardDiv.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openFullscreenImage(mindmap.imgUrl);
+        });
+        return cardDiv;
+    }
+
+    // 打开全屏图片（思维导图放大器）
+    function openFullscreenImage(imgUrl) {
+        const overlay = document.getElementById('fullscreenOverlay');
+        const fullImg = document.getElementById('fullscreenImage');
+        if (imgUrl) {
+            fullImg.src = imgUrl;
+            overlay.classList.add('active');
+        }
+    }
+    function closeFullscreenImage() {
+        const overlay = document.getElementById('fullscreenOverlay');
+        overlay.classList.remove('active');
+        const fullImg = document.getElementById('fullscreenImage');
+        if (fullImg) fullImg.src = '';
+    }
+
+    // 生成书信卡片
+    function createLetterCard(letter) {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'letter-card';
+        let roleEmoji = "🧸";
+        if (letter.role === "杰佩托") roleEmoji = "👴";
+        else if (letter.role === "蟋蟀先生") roleEmoji = "🦗";
+        else if (letter.role === "蓝仙女") roleEmoji = "🧚‍♀️";
+        else if (letter.role === "狐狸和猫") roleEmoji = "🐱🦊";
+        else roleEmoji = "🧸";
+        
+        cardDiv.innerHTML = `
+            <div class="letter-header">
+                <span>📝 ${roleEmoji}</span> ${letter.title} 
+                <span class="role-badge">致 ${letter.role}</span>
+            </div>
+            <div class="letter-preview">
+                <p><strong>${letter.author}</strong> 写道：</p>
+                <p>${letter.preview}...</p>
+            </div>
+            <button class="read-more" data-id="${letter.id}">📖 阅读全文 ➤</button>
+        `;
+        const btn = cardDiv.querySelector('.read-more');
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showLetterDetail(letter.id);
+        });
+        return cardDiv;
+    }
+
+    function showLetterDetail(letterId) {
+        const letter = lettersData.find(l => l.id === letterId);
+        if (!letter) return;
+        const modalOverlay = document.getElementById('letterDetailOverlay');
+        const titleElem = document.getElementById('modalLetterTitle');
+        const contentDiv = document.getElementById('modalLetterContent');
+        titleElem.innerHTML = `✉️ ${letter.author} 写给 ${letter.role} · 《${letter.title}》`;
+        contentDiv.innerHTML = `
+            <p style="white-space: pre-wrap;">${letter.fullContent}</p>
+            <p style="margin-top: 16px; font-style: italic; color:#ab7c48;">—— 来自四年级 ${letter.author} 的纯真心意</p>
+        `;
+        modalOverlay.classList.add('active');
+    }
+    function closeLetterModal() {
+        document.getElementById('letterDetailOverlay').classList.remove('active');
+    }
+
+    // 渲染主页内容 (精选思维导图前3个 + 精选书信前3)
+    function renderHome() {
+        const homeMindmaps = document.getElementById('home-mindmaps');
+        const homeLetters = document.getElementById('home-letters');
+        if (homeMindmaps) {
+            homeMindmaps.innerHTML = '';
+            const topThreeMinds = mindmapData.slice(0, 3);
+            topThreeMinds.forEach(m => homeMindmaps.appendChild(createMindmapCard(m)));
+        }
+        if (homeLetters) {
+            homeLetters.innerHTML = '';
+            const topThreeLetters = lettersData.slice(0, 3);
+            topThreeLetters.forEach(l => homeLetters.appendChild(createLetterCard(l)));
+        }
+    }
+
+    // 渲染完整书信分页
+    function renderFullLetters() {
+        const container = document.getElementById('full-letters-list');
+        if (!container) return;
+        container.innerHTML = '';
+        lettersData.forEach(letter => {
+            container.appendChild(createLetterCard(letter));
+        });
+    }
+
+    // 渲染完整知识树分页 (全部思维导图)
+    function renderFullMindmaps() {
+        const container = document.getElementById('full-mindmaps-list');
+        if (!container) return;
+        container.innerHTML = '';
+        mindmapData.forEach(mind => {
+            container.appendChild(createMindmapCard(mind));
+        });
+    }
+
+    // 页面切换逻辑 (三个页面)
+    let currentPage = 'home';
+    function switchPage(pageId) {
+        const homePage = document.getElementById('home-page');
+        const lettersPage = document.getElementById('letters-page');
+        const mindmapsPage = document.getElementById('mindmaps-page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        // 隐藏所有页面
+        homePage.classList.remove('active-page');
+        lettersPage.classList.remove('active-page');
+        mindmapsPage.classList.remove('active-page');
+        
+        if (pageId === 'home') {
+            homePage.classList.add('active-page');
+            navLinks[0].classList.add('active');
+            navLinks[1].classList.remove('active');
+            navLinks[2].classList.remove('active');
+            // 确保主页内容渲染 (动态)
+            renderHome();
+        } else if (pageId === 'letters') {
+            lettersPage.classList.add('active-page');
+            navLinks[0].classList.remove('active');
+            navLinks[1].classList.add('active');
+            navLinks[2].classList.remove('active');
+            renderFullLetters();
+        } else if (pageId === 'mindmaps') {
+            mindmapsPage.classList.add('active-page');
+            navLinks[0].classList.remove('active');
+            navLinks[1].classList.remove('active');
+            navLinks[2].classList.add('active');
+            renderFullMindmaps();
+        }
+        currentPage = pageId;
+    }
+
+    // 绑定导航与超链接按钮
+    function bindEvents() {
+        const navHome = document.querySelector('.nav-link[data-page="home"]');
+        const navLetters = document.querySelector('.nav-link[data-page="letters"]');
+        const navMindmaps = document.querySelector('.nav-link[data-page="mindmaps"]');
+        if (navHome) navHome.addEventListener('click', () => switchPage('home'));
+        if (navLetters) navLetters.addEventListener('click', () => switchPage('letters'));
+        if (navMindmaps) navMindmaps.addEventListener('click', () => switchPage('mindmaps'));
+        
+        // 主页跳转按钮
+        const toLetters = document.getElementById('toLettersPageBtn');
+        const toMindmapPage = document.getElementById('toMindmapPageBtn');
+        if (toLetters) toLetters.addEventListener('click', () => switchPage('letters'));
+        if (toMindmapPage) toMindmapPage.addEventListener('click', () => switchPage('mindmaps'));
+        
+        // 书信分页返回主页
+        const backHomeFromLetters = document.getElementById('backHomeFromLetters');
+        if (backHomeFromLetters) backHomeFromLetters.addEventListener('click', () => switchPage('home'));
+        const backHomeFromMindmaps = document.getElementById('backHomeFromMindmaps');
+        if (backHomeFromMindmaps) backHomeFromMindmaps.addEventListener('click', () => switchPage('home'));
+        
+        // 关闭书信模态框
+        const closeLetterBtn = document.getElementById('closeLetterDetailBtn');
+        if (closeLetterBtn) closeLetterBtn.addEventListener('click', closeLetterModal);
+        const letterModalOverlay = document.getElementById('letterDetailOverlay');
+        if (letterModalOverlay) letterModalOverlay.addEventListener('click', (e) => {
+            if (e.target === letterModalOverlay) closeLetterModal();
+        });
+    }
+
+    // 额外处理由于动态生成的思维导图卡片已经自带放大监听，确保没有遗漏
+    document.addEventListener('DOMContentLoaded', () => {
+        renderHome();          // 主页内容 (3导图+3书信)
+        renderFullLetters();   // 预加载书信页列表
+        renderFullMindmaps();  // 预加载知识树全页
+        bindEvents();
+        // 初始时确保首页激活、其他分页隐藏
+        const lettersDiv = document.getElementById('letters-page');
+        const mindmapsDiv = document.getElementById('mindmaps-page');
+        if(lettersDiv) lettersDiv.classList.remove('active-page');
+        if(mindmapsDiv) mindmapsDiv.classList.remove('active-page');
+        document.getElementById('home-page').classList.add('active-page');
+        // 全局键盘Esc关闭放大
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeFullscreenImage();
+                closeLetterModal();
+            }
+        });
+    });
+</script>
+</body>
+</html>
+```
