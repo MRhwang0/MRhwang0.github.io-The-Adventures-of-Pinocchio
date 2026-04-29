@@ -272,6 +272,21 @@
             font-style: italic;
             margin: 20px 0;
         }
+        .tool-card {
+            background: #fef1e0;
+            border-radius: 32px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 8px solid #e29c45;
+        }
+        .tool-card h4 { font-size: 1.6rem; color: #b45f2b; margin-bottom: 12px; }
+        .tool-img-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 20px 0;
+        }
 
         footer { text-align: center; margin-top: 60px; padding: 20px; color: #b48957; border-top: 2px dashed #ebcea8; }
         .pinocchio-bg {
@@ -299,7 +314,6 @@
     <div class="header">
         <h1>📖 木偶奇遇记 ✨</h1>
         <p>四年级童心书信展 · 知识树思维导图画廊 · “跟谎言说再见”成长研读成果</p>
-
     </div>
 
     <!-- 四个分页导航 -->
@@ -336,43 +350,60 @@
         <div class="center-btn"><div class="more-link-btn" id="backHomeFromMindmaps">🏠 返回主页</div></div>
     </div>
 
-    <!-- “跟谎言说再见”研读成果分页 (包含研读小组书信 + 项目报告书 + 创意成果图片及文字) -->
+    <!-- “跟谎言说再见”研读成果分页：完整呈现创意成果文档所有文本和图片 -->
     <div id="project-page" class="page">
         <div class="section-title">📖 “跟谎言说再见”研读小组 · 给科洛迪爷爷的书信</div>
         <div class="report-card" id="groupLetterCard"></div>
 
-        <div class="section-title">📊 项目报告书 · 跨学科研读PBL成果（节选）</div>
+        <div class="section-title">✨ 创意成果 —— 《“跟谎言说再见”之我的成长之路》</div>
         <div class="report-card">
-            <h3>📌 项目名称</h3>
-            <p style="font-size:1.2rem; margin-bottom:20px;">“跟谎言说再见”：《小木偶奇遇记》之我的成长之路</p>
-            <h3>👥 指导老师团队</h3>
-            <p>语文唐嘉佳老师、语文罗蓝平老师、语文石小谜老师、语文刘晨老师、信息技术黄俊杰老师、道德与法治胡佩佩老师、英语潘黎雨老师、心理健康吴锋老师、语文侯春明老师、美术陈俊婕老师</p>
-            <h3>🎓 学生小组</h3>
-            <p>四年级“跟谎言说再见”组，共80人，小组成员：邱信、刘伟祺等。</p>
+            <h3>📌 项目引言</h3>
+            <p>本项目以经典童话《小木偶奇遇记》为文本依托，针对当前小学阶段学生群体中较为普遍的撒谎行为现象，回应一线教育工作者长期面临的德育困境。项目紧扣书中主角匹诺曹从一个频繁撒谎、历经磨难的小木偶逐步蜕变为勇于担当、真诚做人的真正男孩这一核心叙事主线，深度融合语文、心理健康、道德与法治、英语、艺术等多学科资源，以“谎言背后的心理密码，成长路上的自我塑造”为核心，系统引导学生深入探究撒谎行为的心理本质、深刻反思其行为代价，习得真诚表达与责任担当的核心素养，最终协作设计并创作属于自己的“真诚成长手册”，切实实现从“认识撒谎”到“践行真诚”的深层内化与行为转化。</p>
             
-            <h3>💡 驱动性问题</h3>
-            <p>匹诺曹从“满口谎言的小木偶”到“勇敢真诚的真人”，对我们理解撒谎的代价、学会真诚表达与责任担当有何启示？我们能否设计一套“真话成长指导手册”，帮助自己和同学应对成长中想“撒谎”的时刻，走稳走好属于自己的“诚实修炼之路”？</p>
+            <h3>🧠 如何科学有效地引导儿童走向诚实？</h3>
+            <p>我们基于发展心理学与行为干预理论，提炼出关键三步策略：<strong>第一步，踩刹车，停一停；第二步，说真话，不逃避；第三步，想办法，做补救。</strong></p>
             
-            <h3>🔧 核心三步真话秘籍（创意成果）</h3>
-            <div class="step-grid">
-                <div class="step-card"><h4>🚦 第一步：踩刹车，停一停</h4><p>阻断冲动反应，激活理性调控。腹式深呼吸、数颜色、说“我需要冷静一下”。</p></div>
-                <div class="step-card"><h4>💬 第二步：说真话，不逃避</h4><p>“爸爸，我犯了一个错误……” 真诚开口，搬走心里的大石头。</p></div>
-                <div class="step-card"><h4>🛠️ 第三步：想办法，做补救</h4><p>“我虽然搞砸了，但我能把它修好”，用行动弥补，重建信任。</p></div>
+            <!-- 文档中的三步策略配图（media文件） -->
+            <div style="text-align: center; margin: 20px 0;">
+                <img src="三步法图示.png" alt="三步策略总览图" style="max-width: 90%; border-radius: 28px; cursor: pointer; box-shadow: 0 6px 14px rgba(0,0,0,0.1);" onclick="openFullscreenImage(this.src)">
+                <p style="margin-top: 8px; font-style: italic; color: #a57134;">📖 三步真话秘籍：踩刹车 · 说真话 · 做补救</p>
             </div>
-            
+
+            <!-- 工具一：踩刹车 -->
+            <div class="tool-card">
+                <h4>🚦 工具一：踩刹车，停一停</h4>
+                <p><strong>功能：</strong>阻断冲动性反应，激活前额叶皮层的理性调控功能。当儿童面临犯错或撒谎的冲动时，帮助其大脑从应激状态回归冷静。</p>
+                <p><strong>用法：</strong>“踩刹车”法：儿童犯错后的第一反应往往是逃避或撒谎，这源于大脑的自动防御机制（杏仁核应激性激活）。“停一停”创造了反应间隙，使前额叶皮层得以有效介入，协助个体从“本能反应”切换到“理性选择”，在此关键环节，教育者可为儿童提供具体可操作的冷静技巧，如腹式深呼吸、脚趾抓地感知、环顾四周数颜色等感官锚定方法。</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="踩刹车.png" alt="踩刹车工具卡" style="max-width: 360px; border-radius: 28px; cursor: pointer; border: 2px solid #eab668;" onclick="openFullscreenImage(this.src)">
+                </div>
+            </div>
+
+            <!-- 工具二：说真话 -->
+            <div class="tool-card">
+                <h4>💬 工具二：说真话，不逃避</h4>
+                <p><strong>功能：</strong>引导责任承担，促进社会关系修复。引导儿童主动践行诚实行为，卸下内心因隐瞒而积压的沉重负担，真正把“心里的大石头”搬走。</p>
+                <p><strong>用法：</strong>发展心理学研究表明，当儿童主动承认错误后，其内疚感水平会显著下降。需要指出的是，适度的内疚感属于健康的道德情绪指标，它与具有自我贬损性质的羞耻感有着本质区别。当孩子说“爸爸，我犯了一个错误......”则有效降低了儿童开口承认错误的心理门槛，这是一种经典的行为启动策略。教育者应持续向儿童传递并强化“说真话不会让事情更糟”。</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="说真话.png" alt="说真话不逃避" style="max-width: 360px; border-radius: 28px; cursor: pointer; border: 2px solid #eab668;" onclick="openFullscreenImage(this.src)">
+                </div>
+            </div>
+
+            <!-- 工具三：做补救 -->
+            <div class="tool-card">
+                <h4>🛠️ 工具三：想办法，做补救</h4>
+                <p><strong>功能：</strong>实施行为补偿，重建自我效能感。引导儿童从内心萌发主动修复的意愿，积极思考“做点什么让事情变好”。</p>
+                <p><strong>用法：</strong>“我虽然搞砸了，但我能把它修好”，借助具体的补救行为帮助儿童逐步重建自我效能感。与此同时，补救行为能够有效修复因撒谎而受损的人际关系与社会信任，从而降低儿童对被孤立或排斥的深层恐惧。然而，关键在于帮助儿童认识到补救无需追求完美，只需做“哪怕很小的事”，以避免因补救期望过高所导致的心理压力与行为退缩。</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <img src="想办法.png" alt="做补救图示" style="max-width: 320px; border-radius: 28px; cursor: pointer; border: 2px solid #eab668;" onclick="openFullscreenImage(this.src)">
+                </div>
+            </div>
+
             <div class="truth-quote">
                 <p>✨ 《班级真相契约》节选：“我们承诺：犯错后先说真话，再想办法补救。” ✨</p>
                 <p>✨ “匹诺曹最后变成了真正的男孩，不是因为他再也不犯错，而是因为他学会了犯错后停、说、补。这就是长大的方式。”</p>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
-                <img src="三步法图示.png" alt="三步法图示" style="max-width: 280px; border-radius: 24px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" onclick="openFullscreenImage(this.src)">
-                <img src="踩刹车.png" alt="踩刹车工具卡" style="max-width: 200px; border-radius: 24px; cursor: pointer;" onclick="openFullscreenImage(this.src)">
-                <img src="说真话.png" alt="说真话不逃避" style="max-width: 280px; border-radius: 24px; cursor: pointer;" onclick="openFullscreenImage(this.src)">
-                <img src="想办法.png" alt="做补救图示" style="max-width: 240px; border-radius: 24px; cursor: pointer;" onclick="openFullscreenImage(this.src)">
-            </div>
-          
-            
             <h3>📚 跨学科融合探究</h3>
             <ul style="margin-left: 30px; line-height:1.8;">
                 <li><strong>语文：</strong>梳理匹诺曹“撒谎-成长”时间线，书信创作、创意改写《如果匹诺曹第一次撒谎就选择真诚》</li>
@@ -381,10 +412,11 @@
                 <li><strong>艺术与媒介：</strong>思维导图呈现撒谎次数与后果，制作成长手册</li>
                 <li><strong>英语/AI：</strong>中英书信对比阅读，AI辅助翻译</li>
             </ul>
+            
             <h3>🏆 项目成果与推广</h3>
             <p>举办“告别谎言·真诚成长”成果展示会，优秀书信、思维导图、成长手册集结成电子画册，颁发“真诚成长勋章”，全体学生宣誓：以匹诺曹为镜，跟谎言说再见。</p>
             
-            <!-- 新增图片：班级真相契约 -->
+            <!-- 班级真相契约图片（新增） -->
             <div style="display: flex; justify-content: center; margin: 30px 0 20px;">
                 <div style="text-align: center;">
                     <img src="371cf76794b7e0955f3afd7fdff5a950(1).jpg" alt="班级真相契约" style="max-width: 90%; max-height: 500px; border-radius: 24px; cursor: pointer; box-shadow: 0 8px 20px rgba(0,0,0,0.15); border: 3px solid #eab668;" onclick="openFullscreenImage(this.src)">
@@ -423,11 +455,11 @@
         { id: 8, title: "🐱 四6班柳晨约", imgUrl: "1 (2).jpg", desc: "学会分辨真伪朋友" }
     ];
 
-    // 书信数据 (含研读小组共同书信)
+    // 书信数据
     const lettersData = [
-{ id: 1, author: "邱信 (四年级)", role: "科洛迪先生", title: "写给《木偶奇遇记》的作者", preview: "你的想象力让我非常震惊，尤其是木头会讲话那一段。我笑得合不拢嘴...", fullContent: "亲爱的科洛迪先生：\n\n你的想象力让我非常震惊，尤其是木头会讲话那一段。我笑得合不拢嘴。两个老头在那里争吵，写得很生动。好像那一段没有一个字是没用的。\n\n其中，有一些角色的遭遇让我感到悲伤。他就是匹诺曹的爸爸。他用唯一的保暖工具为匹诺曹换来了一本课本，但是匹诺曹为了自己的好奇心把那本课本换了一张门票。他还因为这差点丢了性命。如果我是匹诺曹的爸爸，我会不会感到我是不是不该这么为了匹诺曹而不顾一切。\n\n这本书有很多人来劝阻匹诺曹，但能成功劝阻匹诺曹的只有小仙女。小仙女用过人的智慧让匹诺曹吃药，干活。特别是小仙女让匹诺曹吃药那一段。那一段，小仙女找到了匹诺曹怕死的特点，让匹诺曹乖乖吃药。我以后也要像小仙女学习。\n\n读完这一本书，我有很多的疑问。比如：\"小仙女要匹诺曹上学之前，匹诺曹知不知道自己去学校去干什么，为什么匹诺曹要结交比较调皮的学生做朋友？\"\n\n祝身体健康！\n\n读者邱信\n\n2026年4月6日" },
-{ id: 2, author: "庄雅希 (四年级)", role: "科洛迪先生", title: "致《小木偶奇遇记》的作者", preview: "读完了《小木偶奇遇记》，我印象很深刻，而且觉得特别有趣！合上书的时候，我还久久沉浸在匹诺曹冒险的故事里...", fullContent: "亲爱的科洛迪先生：\n\n您好！\n\n读完了《小木偶奇遇记》，我印象很深刻，而且觉得特别有趣！合上书的时候，我还久久沉浸在匹诺曹冒险的故事里，忍不住一遍又一遍回想那精彩的情节。\n\n首先，我印象最深的，就是\"撒谎鼻子就变长\"的绝妙设定。当匹诺曹第一次对着蓝发仙女撒谎，鼻子就一点点在变，但在匹诺曹说完他最后一个谎言后，他的鼻子长得连门都出不去了，这个画面我一想起来就忍俊不禁，更让我明白了诚实的可贵，给了我深深的启迪。\n\n这份启迪也指引着我今后的生活。在学习上，我要诚实对待每一次作业，不抄袭、不敷衍；在和同学相处时，我要诚实对待朋友。就像匹诺曹最终因为诚实收获了幸福一样，我相信，只要保持诚实的品质，不仅能避免\"鼻子变长\"那样的小麻烦，更能收获老师的喜爱、同学的友谊，这会是我成长路上最好的财富。\n\n其次，书中讲述的\"奇迹种金币\"也非常精彩。狐狸和猫骗匹诺曹把金币埋在土里，就能长出满树金币，这个情节既写出了贪心的可笑，又充满了童话的趣味；还有贪玩的孩子去了\"玩具岛\"就会变成驴子，被卖到马戏团受苦，这个夸张的惩罚给我带了警醒。因为贪心会让人失去理智，总想着不劳而获，最终只会竹篮打水一场空。\n\n最后，谢谢您写出这么棒的故事，让我收获了很多道理，时刻提醒我要做一个诚实、勤奋、不贪心、不贪玩的好孩子。\n\n庄雅希\n\n2026年4月7日" },
+        { id: 1, author: "邱信 (四年级)", role: "科洛迪先生", title: "写给《木偶奇遇记》的作者", preview: "你的想象力让我非常震惊，尤其是木头会讲话那一段。我笑得合不拢嘴...", fullContent: "亲爱的科洛迪先生：\n\n你的想象力让我非常震惊，尤其是木头会讲话那一段。我笑得合不拢嘴。两个老头在那里争吵，写得很生动。好像那一段没有一个字是没用的。\n\n其中，有一些角色的遭遇让我感到悲伤。他就是匹诺曹的爸爸。他用唯一的保暖工具为匹诺曹换来了一本课本，但是匹诺曹为了自己的好奇心把那本课本换了一张门票。他还因为这差点丢了性命。如果我是匹诺曹的爸爸，我会不会感到我是不是不该这么为了匹诺曹而不顾一切。\n\n这本书有很多人来劝阻匹诺曹，但能成功劝阻匹诺曹的只有小仙女。小仙女用过人的智慧让匹诺曹吃药，干活。特别是小仙女让匹诺曹吃药那一段。那一段，小仙女找到了匹诺曹怕死的特点，让匹诺曹乖乖吃药。我以后也要像小仙女学习。\n\n读完这一本书，我有很多的疑问。比如：\"小仙女要匹诺曹上学之前，匹诺曹知不知道自己去学校去干什么，为什么匹诺曹要结交比较调皮的学生做朋友？\"\n\n祝身体健康！\n\n读者邱信\n\n2026年4月6日" },
 
+{ id: 2, author: "庄雅希 (四年级)", role: "科洛迪先生", title: "致《小木偶奇遇记》的作者", preview: "读完了《小木偶奇遇记》，我印象很深刻，而且觉得特别有趣！合上书的时候，我还久久沉浸在匹诺曹冒险的故事里...", fullContent: "亲爱的科洛迪先生：\n\n您好！\n\n读完了《小木偶奇遇记》，我印象很深刻，而且觉得特别有趣！合上书的时候，我还久久沉浸在匹诺曹冒险的故事里，忍不住一遍又一遍回想那精彩的情节。\n\n首先，我印象最深的，就是\"撒谎鼻子就变长\"的绝妙设定。当匹诺曹第一次对着蓝发仙女撒谎，鼻子就一点点在变，但在匹诺曹说完他最后一个谎言后，他的鼻子长得连门都出不去了，这个画面我一想起来就忍俊不禁，更让我明白了诚实的可贵，给了我深深的启迪。\n\n这份启迪也指引着我今后的生活。在学习上，我要诚实对待每一次作业，不抄袭、不敷衍；在和同学相处时，我要诚实对待朋友。就像匹诺曹最终因为诚实收获了幸福一样，我相信，只要保持诚实的品质，不仅能避免\"鼻子变长\"那样的小麻烦，更能收获老师的喜爱、同学的友谊，这会是我成长路上最好的财富。\n\n其次，书中讲述的\"奇迹种金币\"也非常精彩。狐狸和猫骗匹诺曹把金币埋在土里，就能长出满树金币，这个情节既写出了贪心的可笑，又充满了童话的趣味；还有贪玩的孩子去了\"玩具岛\"就会变成驴子，被卖到马戏团受苦，这个夸张的惩罚给我带了警醒。因为贪心会让人失去理智，总想着不劳而获，最终只会竹篮打水一场空。\n\n最后，谢谢您写出这么棒的故事，让我收获了很多道理，时刻提醒我要做一个诚实、勤奋、不贪心、不贪玩的好孩子。\n\n庄雅希\n\n2026年4月7日" },
 { id: 3, author: "邓熙晋 (四年级)", role: "匹诺曹", title: "致匹诺曹的一封信", preview: "我是一名和你一样，喜欢冒险、也偶尔会犯小错误的小学四年级小朋友，最近我读完了你的奇遇故事，心里有好多话想对你说...", fullContent: "亲爱的匹诺曹：\n\n我是一名和你一样，喜欢冒险、也偶尔会犯小错误的小学四年级小朋友，最近我读完了你的奇遇故事，心里有好多话想对你说，所以就提笔给你写了这封信，希望你能收到我的心意。\n\n说实话，一开始读你的故事的时候，我觉得你真的太调皮、太任性了，有时候甚至有点生气。你明明有善良的爸爸，为了给你做课本，卖掉了自己唯一的外套，还辛辛苦苦地照顾你，可你却不听爸爸的话，偷偷逃学，跑去看马戏，把爸爸的心血抛在脑后；你还有温柔的蓝发仙女，一次次原谅你的错误，耐心地教导你，可你却一次次说谎欺骗她，看着你的鼻子越变越长，我都替你着急，也想对你说：匹诺曹，别再撒谎了，诚实一点吧！还有小蟋蟀，它一直真心实意地劝告你，让你好好学习、孝敬爸爸，可你却不耐烦地把它赶走，甚至想伤害它，那时候我真的觉得你太不懂事了。\n\n后来，看到你被狐狸和猫欺骗，卖掉了课本，还被抓起来，我又有点心疼你；看到你因为贪玩，去了玩具国，每天只顾着玩，不学习、不干活，最后变成了一头驴子，被人卖掉，受尽了苦难，我更是替你难过，心里默默想：匹诺曹，你快醒醒吧，别再贪玩了，赶紧回到爸爸和仙女姐姐身边吧！\n\n不过，让我开心的是，你终于慢慢醒悟了。当你得知爸爸为了找你，不顾危险，乘船去寻找，最后被困在大鲸鱼的肚子里时，你再也不是那个调皮任性的小木偶了。你变得勇敢、坚强，不顾一切地去救爸爸，哪怕遇到再多的困难，哪怕要面对汹涌的大海和可怕的大鲸鱼，你也没有退缩。你努力地干活赚钱，弥补自己之前的错误，不再说谎、不再贪玩，认真学习、孝敬爸爸，一点点改掉了自己所有的坏毛病。当我读到你最后变成一个真正的小男孩，和爸爸幸福地生活在一起的时候，我真的太为你开心了，也忍不住为你鼓掌！\n\n匹诺曹，从你的故事里，我学到了很多道理。我知道，每个人都会犯错，就像我有时候也会偷懒、会撒谎，会让爸爸妈妈和老师操心，但是，犯错并不可怕，可怕的是犯错之后不承认、不改正。你用自己的经历告诉我们：只要勇于承认错误，努力改正错误，就能变成更好的自己。\n\n我也想对你说，以后不要再犯之前的错误啦，要一直做一个诚实、懂事、勇敢、善良的好孩子，好好孝敬爸爸，珍惜仙女姐姐对你的关爱，认真学习，不再贪玩。我也会向你学习，改掉自己的小毛病，上课认真听讲，按时完成作业，孝敬爸爸妈妈，尊敬老师，团结同学，做一个让大家喜欢的好孩子。\n\n不知道你现在过得开心吗？有没有一直保持着好习惯？希望你永远快乐、永远善良，和爸爸一起过着幸福的生活，也希望我们都能在成长的路上，慢慢变成更好的自己！\n\n邓熙晋\n\n2026年4月7日" },
 
 { id: 4, author: "朱沁馨 (四年级)", role: "匹诺曹", title: "给匹诺曹的信", preview: "经历这段奇妙的旅程，让你懂得了什么道理？其实我觉得，在狐狸和猫欺骗你的时候，你就该多想一想...", fullContent: "亲爱的匹诺曹：\n\n你好！我读完《木偶奇遇记》这本书，觉得你是个特别棒的孩子，一路经历了那么多坎坷和考验，最终如愿变成了真正的人类小孩。我心中充满好奇，想和你聊一聊。\n\n经历这段奇妙的旅程，让你懂得了什么道理？其实我觉得，在狐狸和猫欺骗你的时候，你就该多想一想：既然五枚金币能够种出两千枚来，那为什么狐理它们不自己去种，反而要告诉你呢？不过，你身上也有格外耀眼的闪光点，尽管警犬在帮警察追你，但你依然还是毫不犹豫地救助了不会游泳的它。那次你做得特别好，值得点个大大的赞！正是这些勇敢、善良的行为让你的愿望成真——变成了真正的人！\n\n我特别好奇，在那之后你是否还有在上学时遇到布鲁诺他们吗？你的学校有发生什么新变化？不如换我来给你讲讲我的学校吧！我们的教学楼由紫、橙、白色相间组成，一座座高楼林立，满满的城市氛围。校园里还有宽广无边的操场，经常能看到许多小小的身影在上面飞奔，充满了欢声笑语。教室里，朗朗的读书声此起披伏，回荡在整个校园......\n\n除了上学，周末时我还经常和家人去户外放松。有时，我们在高山上徒步攀登，一步步向着山顶前行，虽然辛苦却很有成就感；有时，我们坐在青青的草坪上聊天、野餐，吹着微风，心情格外舒畅！真希望我能有更多时间和你一起聊天，聊聊成长烦恼和学习心得。最后，衷心祝愿你每天都快快乐乐，幸福顺遂！\n\n小读者：朱沁馨\n\n2026年4月6日" },
@@ -437,17 +469,17 @@
 { id: 6, author: "冯丹朗 (四年级)", role: "匹诺曹", title: "诚实是比金子还珍贵的东西", preview: "我还记得，你刚从木头变成小木偶的时候，总爱随口说谎。为了贪玩骗爸爸，为了逃避犯错骗仙女，每一次撒谎，你的鼻子就会不受控制地变长...", fullContent: "亲爱的匹诺曹：\n\n你好！我是来自民新小学四（6）班的冯丹朗，最近读完了你的故事，心里有好多话想对你说。\n\n我还记得，你刚从木头变成小木偶的时候，总爱随口说谎。为了贪玩骗爸爸，为了逃避犯错骗仙女，每一次撒谎，你的鼻子就会不受控制地变长，连门都出不去，还被小动物们嘲笑，你肯定觉得尴尬又难过吧？其实说谎的坏处远远不止鼻子变长哦。你总是欺骗信任你的人，大家心里会对你越来越失望，就算你后来说的是真话，别人也会怀疑你，不再信任你，这种被孤立的感觉，一定比鼻子变长更难受吧！而且说谎的时候，你心里肯定也是七上八下的，吃不好也玩不好，这样多郁闷啊！\n\n匹诺曹，我的爸爸妈妈对我说过：\"诚实是比金子还珍贵的东西\"。所以我想告诉你，做错事并不可怕，做错后能承认错误，主动改正，才是最勇敢的行为。诚实的孩子，会收获家人的疼爱、朋友的信任、老师的表扬，走到哪里都受大家欢迎，这种感觉才是最棒的呢！\n\n你后来改掉了说谎的坏毛病，变得诚实、懂事、有担当，最终才变成了真正的小男孩，这都是诚实带给你的礼物呀！\n\n希望你永远守住诚实的好品质，再也不说谎，每天都过得开心又幸福！\n\n冯丹朗\n\n2026年4月5日" },
     ];
 
-// 研读小组集体书信内容（中文版）
+// 研读小组集体书信内容（中文版，保留原文加粗格式）
 const groupLetter = {
     author: "“跟谎言说再见”研读小组",
     role: "科洛迪爷爷",
-    title: "致科洛迪爷爷——成长、真相与责任",
-    fullContent: "尊敬的科洛迪爷爷：\n\n您好！\n\n我们是来自“跟谎言说再见”研读小组的师生。在读完您的《木偶奇遇记》后，我们每个人深受启发。在这本书中，您给我们塑造了意大利儿童文学史上第一个成功的长篇童话形象——匹诺曹。这个故事远不止是一个小木偶撒谎的趣味叙事，更是一段关于男孩自我觉醒、挣脱谎言、学会担当的成长史诗，让我们在字里行间读懂了真诚与责任的重量。\n\n这份触动，促使我们提出了驱动整个研学项目的核心问题：“匹诺曹从‘满口谎言的小木偶’蜕变为‘勇敢真诚的真人’，对我们理解撒谎的代价、学会真诚表达与责任担当有何启示？我们能否设计一套‘真话成长指导手册’，帮助自己和同学应对成长中想‘撒谎’的时刻，走稳走好属于自己的‘诚实修炼之路’？”\n\n为了探索这个问题，我们结合多学科视角，展开深入阅读：语文与文学方面，我们梳理匹诺曹撒谎成长时间线，撰写书信，进行创意思辨辩论；心理健康与成长方面，我们开展“我的撒谎心理地图”工作坊，剖析撒谎背后的心理原因；道德与法治方面，我们学习“坦诚表达”的沟通技巧，反复练习真诚道歉；艺术与媒介方面，我们用思维导图呈现谎言连锁反应。\n\n正是您的作品，让我们总结出了面对谎言时的“三步真话秘籍”：第一步“踩刹车，停一停”，在想要撒谎的瞬间冷静下来；第二步“说真话，不逃避”，鼓起勇气直面事实；第三步“想办法，做补偿”，主动承担过错，用实际行动弥补。匹诺曹的每一次成长，都在激励着我们。\n\n衷心感谢您，为我们带来了匹诺曹，带来了这段充满力量与温暖的成长故事。在我们的成长路上，我们都需要“匹诺曹”。\n\n此致\n敬礼\n\n“跟谎言说再见”研读小组\n2026年4月22日",
-    // 新增英文字段
-    fullContentEnglish: "Dear Grandpa Carlo Collodi,\n\nGreetings!\n\nWe are teachers and students from the \"Say Goodbye to Lies\" study group. After reading your The Adventures of Pinocchio, every one of us has been deeply inspired. In this book, you have created Pinocchio, the first successful full-length fairy-tale character in the history of Italian children's literature. This story is far more than an amusing narrative about a little puppet telling lies; it is an epic of growth about a boy's self-awakening, breaking free from lies, and learning to take responsibility. It allows us to understand the weight of sincerity and duty between the lines.\n\nThis touch prompted us to put forward the core question driving our entire research-based learning project: What enlightenment does Pinocchio's transformation from \"a lying little puppet\" to \"a brave and sincere real boy\" bring to our understanding of the cost of lying, learning to express sincerely and take responsibility? Can we design a \"Truth Growth Guide\" to help ourselves and classmates cope with moments when we want to \"tell lies\" and walk steadily on our own \"path of honesty cultivation\"?\n\nTo explore this question, we conducted in-depth reading from multidisciplinary perspectives to ground every thought:\n\nChinese Language & Literature: We carefully sorted out Pinocchio's timeline of \"lying -- making mistakes -- reflecting -- growing up\", and analyzed his change from wayward to brave and sincere. Students in our study group wrote a letter to the protagonist Pinocchio to express their views on his growth. We also wrote to you to discuss your wonderful ideas when conceiving this story, and explore your original intention in shaping the classic image of Pinocchio. In class, we also held creative debate competitions, expressing our opinions on topics such as If Pinocchio Had Chosen Sincerity the First Time He Lied or If Pinocchio Had Told the Truth Every Time, and experienced the different lives brought by sincerity and lies in imagination.\n\nMental Health & Growth: Around the workshop \"My Psychological Map of Lying\", we shared candidly specific scenes in our growth where we wanted to lie, and carefully analyzed the underlying psychological reasons -- whether it was fear of criticism, desire to escape, or longing for recognition. We also discussed together how to minimize lying, and how to make up for mistakes and reduce losses in appropriate ways after accidentally lying.\n\nMorality and Rule of Law: We systematically learned communication skills of \"honest expression\" and got rid of the inertial thinking of \"escaping when making mistakes\". Through scenario simulation, we repeatedly practiced \"how to apologize sincerely after making mistakes\", learned to face mistakes and take responsibility, and made sincerity the foundation of getting along with others.\n\nArts & Media: We carefully sorted out the details of Pinocchio lying in the book, analyzed the reasons for his lies, and clearly presented the number and specific content of his lies in the form of mind maps, so that everyone could intuitively see the chain reactions caused by lies.\n\nIt is your work that has enabled us to summarize the \"Three-Step Truth Secret Book\" when facing lies through discussions again and again: Step 1: Hit the brakes and pause -- calm down at the moment you want to lie and refuse to escape impulsively. Step 2: Tell the truth and don't escape -- summon up the courage to face the facts and speak the truth honestly. Step 3: Find a way and make amends -- take the initiative to bear faults and make up for your mistakes with practical actions.\n\nEvery growth of Pinocchio inspires us. For us, every study is a spiritual baptism, and every reflection is a step forward in growth.\n\nWe sincerely thank you for bringing Pinocchio to us, and for bringing this growing story full of strength and warmth. On our way of growth, we all need a \"Pinocchio\".\n\nSincerely,\n\nThe \"Say Goodbye to Lies\" Study Group\n\nApril 22, 2026"
+    title: "主题书信：致《小木偶奇遇记》作者——科洛迪爷爷",
+    fullContent: "<strong>主题书信：致《小木偶奇遇记》作者——科洛迪爷爷</strong>\n\n尊敬的科洛迪爷爷：\n\n您好！\n\n我们是来自“跟谎言说再见”研读小组的师生。在读完您的《木偶奇遇记》后，我们每个人深受启发。在这本书中，您给我们塑造了意大利儿童文学史上第一个成功的长篇童话形象——匹诺曹。这个故事远不止是一个小木偶撒谎的趣味叙事，更是一段关于男孩自我觉醒、挣脱谎言、学会担当的成长史诗，让我们在字里行间读懂了真诚与责任的重量。\n\n这份触动，促使我们提出了驱动整个研学项目的核心问题：“匹诺曹从‘满口谎言的小木偶’蜕变为‘勇敢真诚的真人’，对我们理解撒谎的代价、学会真诚表达与责任担当有何启示？我们能否设计一套‘真话成长指导手册’，帮助自己和同学应对成长中想‘撒谎’的时刻，走稳走好属于自己的‘诚实修炼之路’？”\n\n为了探索这个问题，我们结合多学科视角，展开深入阅读，让每一份思考都落地：\n\n<strong>语文与文学：</strong>我们仔细梳理匹诺曹 “撒谎 - 犯错-反思-成长”的时间线，分析匹诺曹由任性到勇敢、真诚的变化；我们研读小组的学生们给主人公匹诺曹写一封信，表达对其成长的看法；我们也写信给您，与您探讨您在构思这个故事时的奇思妙想，探寻您在塑造匹诺曹这一经典形象的初心；课堂上，我们还进行了创意思辨辩论赛，围绕《如果匹诺曹第一次撒谎就选择真诚》或《如果匹诺曹每次都说真话》等话题各抒己见，在想象中体会真诚与谎言带来的不同人生。\n\n<strong>心理健康与成长：</strong>我们围绕“我的撒谎心理地图”工作坊，大家坦诚分享自己成长中想撒谎的具体场景，认真剖析背后的心理原因——是害怕批评、渴望逃避，还是想获得认可，并一起探讨如何尽量减少撒谎的行为，以及在不慎撒谎后，如何用恰当的方式弥补过错、减少损失。\n\n<strong>道德与法治：</strong>我们系统学习了“坦诚表达”的沟通技巧，摆脱“犯错就逃避”的惯性思维；通过情景模拟，反复练习“犯错后如何真诚道歉”，学会直面错误、承担责任，让真诚成为与人相处的底色。\n\n<strong>艺术与媒介：</strong>我们仔细梳理书中小木偶匹诺曹撒谎的细节，剖析他撒谎的原因，并用思维导图的方式，清晰呈现出小木偶撒谎的次数，具体内容，让大家直观看到谎言带来的连锁反应。\n\n正是您的作品，让我们在一次次探讨中，总结出了面对谎言时的“三步真话秘籍”：第一步“踩刹车，停一停”，在想要撒谎的瞬间冷静下来，拒绝冲动逃避；第二步“说真话，不逃避”，鼓起勇气直面事实，坦诚说出真相；第三步“想办法，做补偿”，主动承担过错，用实际行动弥补自己的失误。匹诺曹的每一次成长，都在激励着我们，对我们而言，每一次研读都是一次精神的洗礼，每一次反思都是一次成长的进步。\n\n衷心感谢您，为我们带来了匹诺曹，带来了这段充满力量与温暖的成长故事。在我们的成长路上，我们都需要“匹诺曹”。\n\n此致\n\n敬礼\n\n“跟谎言说再见”研读小组\n\n2026年4月22日",
+    
+    // 英文版（保留原文加粗格式）
+    fullContentEnglish: "<strong>A Thematic Letter: To Grandpa Carlo Collodi -- A Dialogue on Growth, Truth and Responsibility</strong>\n\nDear Grandpa Carlo Collodi,\n\nGreetings!\n\nWe are teachers and students from the <strong>\"Say Goodbye to Lies\"</strong> study group. After reading your <strong><em>The Adventures of Pinocchio,</em></strong> every one of us has been deeply inspired. In this book, you have created Pinocchio, the first successful full-length fairy-tale character in the history of Italian children's literature. This story is far more than an amusing narrative about a little puppet telling lies; it is an epic of growth about a boy's self-awakening, breaking free from lies, and learning to take responsibility. It allows us to understand the weight of sincerity and duty between the lines.\n\nThis touch prompted us to put forward the core question driving our entire research-based learning project: What enlightenment does Pinocchio's transformation from \"a lying little puppet\" to \"a brave and sincere real boy\" bring to our understanding of the cost of lying, learning to express sincerely and take responsibility? Can we design a \"Truth Growth Guide\" to help ourselves and classmates cope with moments when we want to \"tell lies\" and walk steadily on our own \"path of honesty cultivation\"?\n\nTo explore this question, we conducted in-depth reading from multidisciplinary perspectives to ground every thought:\n\n<strong>Chinese Language & Literature:</strong> We carefully sorted out Pinocchio's timeline of \"lying -- making mistakes -- reflecting -- growing up\", and analyzed his change from wayward to brave and sincere. Students in our study group wrote a letter to the protagonist Pinocchio to express their views on his growth. We also wrote to you to discuss your wonderful ideas when conceiving this story, and explore your original intention in shaping the classic image of Pinocchio. In class, we also held creative debate competitions, expressing our opinions on topics such as If Pinocchio Had Chosen Sincerity the First Time He Lied or If Pinocchio Had Told the Truth Every Time, and experienced the different lives brought by sincerity and lies in imagination.\n\n<strong>Mental Health & Growth:</strong> Around the workshop \"My Psychological Map of Lying\", we shared candidly specific scenes in our growth where we wanted to lie, and carefully analyzed the underlying psychological reasons -- whether it was fear of criticism, desire to escape, or longing for recognition. We also discussed together how to minimize lying, and how to make up for mistakes and reduce losses in appropriate ways after accidentally lying.\n\n<strong>Morality and Rule of Law:</strong> We systematically learned communication skills of \"honest expression\" and got rid of the inertial thinking of \"escaping when making mistakes\". Through scenario simulation, we repeatedly practiced \"how to apologize sincerely after making mistakes\", learned to face mistakes and take responsibility, and made sincerity the foundation of getting along with others.\n\n<strong>Arts & Media:</strong> We carefully sorted out the details of Pinocchio lying in the book, analyzed the reasons for his lies, and clearly presented the number and specific content of his lies in the form of mind maps, so that everyone could intuitively see the chain reactions caused by lies.\n\nIt is your work that has enabled us to summarize the \"Three-Step Truth Secret Book\" when facing lies through discussions again and again: Step 1: Hit the brakes and pause -- calm down at the moment you want to lie and refuse to escape impulsively. Step 2: Tell the truth and don't escape -- summon up the courage to face the facts and speak the truth honestly. Step 3: Find a way and make amends -- take the initiative to bear faults and make up for your mistakes with practical actions.\n\nEvery growth of Pinocchio inspires us. For us, every study is a spiritual baptism, and every reflection is a step forward in growth.\n\nWe sincerely thank you for bringing Pinocchio to us, and for bringing this growing story full of strength and warmth. On our way of growth, we all need a \"Pinocchio\".\n\nSincerely,\n\n<strong>The \"Say Goodbye to Lies\" Study Group</strong>\n\nApril 22, 2026"
 };
-
-    // 生成卡片函数
+    // 通用函数
     function createMindmapCard(mindmap) {
         const div = document.createElement('div'); div.className = 'mindmap-item';
         div.innerHTML = `<img class="mindmap-img" src="${mindmap.imgUrl}" alt="${mindmap.title}"><p>${mindmap.title}</p><small style="color:#a57134;">${mindmap.desc}</small>`;
@@ -457,15 +489,13 @@ const groupLetter = {
 
     function createLetterCard(letter) {
         const div = document.createElement('div'); div.className = 'letter-card';
-        let emoji = "🧸";
-        if(letter.role === "科洛迪先生" || letter.role === "科洛迪爷爷") emoji = "📖";
+        let emoji = (letter.role === "科洛迪先生" || letter.role === "科洛迪爷爷") ? "📖" : "🧸";
         div.innerHTML = `
             <div class="letter-header"><span>📝 ${emoji}</span> ${letter.title} <span class="role-badge">致 ${letter.role}</span></div>
             <div class="letter-preview"><p><strong>${letter.author}</strong> 写道：</p><p>${letter.preview}...</p></div>
             <button class="read-more" data-id="${letter.id}">📖 阅读全文 ➤</button>
         `;
-        const btn = div.querySelector('.read-more');
-        btn.addEventListener('click', (e) => { e.stopPropagation(); showLetterDetail(letter.id); });
+        div.querySelector('.read-more').addEventListener('click', (e) => { e.stopPropagation(); showLetterDetail(letter.id); });
         return div;
     }
 
@@ -473,23 +503,20 @@ const groupLetter = {
         let letter = lettersData.find(l => l.id === id);
         if(!letter && id === 999) letter = { ...groupLetter, id:999 };
         if(!letter) return;
-        const modal = document.getElementById('letterDetailOverlay');
         document.getElementById('modalLetterTitle').innerHTML = `✉️ ${letter.author} 写给 ${letter.role} · 《${letter.title}》`;
         document.getElementById('modalLetterContent').innerHTML = `<p style="white-space:pre-wrap;">${letter.fullContent}</p><p style="margin-top:16px; font-style:italic;">—— 来自真诚研读者的心意</p>`;
-        modal.classList.add('active');
+        document.getElementById('letterDetailOverlay').classList.add('active');
     }
     function closeLetterModal() { document.getElementById('letterDetailOverlay').classList.remove('active'); }
     function openFullscreenImage(src) { 
-        const overlay = document.getElementById('fullscreenOverlay'); 
         document.getElementById('fullscreenImage').src = src; 
-        overlay.classList.add('active'); 
+        document.getElementById('fullscreenOverlay').classList.add('active'); 
     }
     function closeFullscreenImage() { 
         document.getElementById('fullscreenOverlay').classList.remove('active'); 
         document.getElementById('fullscreenImage').src = ''; 
     }
 
-    // 渲染各页面
     function renderHome() {
         const homeMind = document.getElementById('home-mindmaps');
         const homeLet = document.getElementById('home-letters');
@@ -504,26 +531,19 @@ const groupLetter = {
         const container = document.getElementById('full-mindmaps-list'); 
         if(container){ container.innerHTML = ''; mindmapData.forEach(m => container.appendChild(createMindmapCard(m))); }
     }
-    // 渲染研读小组书信卡片（中英文双语切换）
-function renderGroupLetter() {
-    const container = document.getElementById('groupLetterCard');
-    if(container){
-        // 创建一个带双语切换的卡片
-        container.innerHTML = `
-            <div class="letter-card" style="width:100%; margin-bottom:20px;">
-                <div class="letter-header">
-                    <span>📖 ✨</span> ${groupLetter.title} 
-                    <span class="role-badge">致 ${groupLetter.role}</span>
-                    <span style="margin-left:auto; display:flex; gap:8px;">
-                        <button id="showChineseBtn" style="background:#e2b87a; border:none; border-radius:30px; padding:4px 12px; cursor:pointer; font-size:0.8rem;">🇨🇳 中文</button>
-                        <button id="showEnglishBtn" style="background:#e2b87a; border:none; border-radius:30px; padding:4px 12px; cursor:pointer; font-size:0.8rem;">🇬🇧 English</button>
-                    </span>
-                </div>
-                <div class="letter-preview" id="groupLetterPreview">
-                    <p><strong>${groupLetter.author}</strong> 诚挚写下：</p>
-                    <p>${groupLetter.fullContent.substring(0, 200)}...</p>
-                </div>
-                <button class="read-more" id="showGroupLetterBtn">📚 阅读研读小组完整书信 ➤</button>
+    function renderGroupLetter() {
+        const container = document.getElementById('groupLetterCard');
+        if(container){
+            container.innerHTML = `
+                <div class="letter-card" style="width:100%;">
+                    <div class="letter-header"><span>📖 ✨</span> ${groupLetter.title} <span class="role-badge">致 ${groupLetter.role}</span>
+                        <span style="margin-left:auto; display:flex; gap:8px;">
+                            <button id="showChineseBtn" style="background:#e2b87a; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">🇨🇳 中文</button>
+                            <button id="showEnglishBtn" style="background:#e2b87a; border:none; border-radius:30px; padding:4px 12px; cursor:pointer;">🇬🇧 English</button>
+                        </span>
+                    </div>
+                    <div class="letter-preview" id="groupLetterPreview"><p><strong>${groupLetter.author}</strong> 诚挚写下：</p><p>${groupLetter.fullContent.substring(0, 200)}...</p></div>
+                    <button class="read-more" id="showGroupLetterBtn">📚 阅读研读小组完整书信 ➤</button>
             </div>
         `;
         
